@@ -1,6 +1,6 @@
 # Student-Centered Collaboration Research Project
 
-This application is part of a research study exploring how users engage in interviews about their social connections—either with a chatbot or with a human peer. The study "Network." is conducted by Marco Galle from [PH Luzern](https://www.phlu.ch/) with technical support by [smartive AG](https://www.smartive.ch/).
+This application is part of a research study exploring how users engage in interviews about their social connections—either with a chatbot or with a human peer. The study "network." is conducted by [Marco Galle](https://www.marcogalle.com/) from [PH Luzern](https://www.phlu.ch/) with technical support by [smartive AG](https://www.smartive.ch/) and financed by [Swiss National Science Foundation](https://www.snf.ch/).
 
 ## Overview
 
