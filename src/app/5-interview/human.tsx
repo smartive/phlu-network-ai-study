@@ -140,7 +140,12 @@ export const HumanInterview = () => {
     formData.append('audio', audioBlob);
 
     try {
-      await uploadAudioInterview(formData);
+      const uploadPromise = uploadAudioInterview(formData);
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Upload timeout')), 180000); // 3 minutes timeout for the upload
+      });
+
+      await Promise.race([uploadPromise, timeoutPromise]);
       setIsUploaded(true);
       setIsUploading(false);
     } catch (err) {
@@ -291,10 +296,16 @@ export const HumanInterview = () => {
                     </p>
                   </div>
                 ) : (
-                  <Button onClick={handleUpload} className="gap-2">
-                    <RefreshCw className="w-4 h-4" />
-                    Upload erneut versuchen
-                  </Button>
+                  <div className="flex items-center justify-between w-full">
+                    <Button onClick={handleUpload} className="gap-2">
+                      <RefreshCw className="w-4 h-4" />
+                      Upload erneut versuchen
+                    </Button>
+                    <Button onClick={handleProceedToNextStep} className="gap-2">
+                      Weiter ohne Upload
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </div>
                 )}
               </div>
             </div>

@@ -78,7 +78,6 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: getModel('gpt-4o', session.user.userId),
-    temperature: 0.7,
     messages: [
       {
         role: 'system',
