@@ -10,7 +10,7 @@ const azureOpenAI = createAzure({
   apiVersion: process.env.AZURE_OPENAI_API_VERSION,
 });
 
-export const getModel = (model: 'gpt-4o' | 'gpt-4o-mini', userId: string) => {
+export const getModel = (model: string, userId: string) => {
   let languageModel = azureOpenAI(model, {
     user: userId,
   });

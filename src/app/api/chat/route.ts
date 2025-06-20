@@ -77,7 +77,7 @@ export async function POST(req: Request) {
   ]);
 
   const result = streamText({
-    model: getModel('gpt-4o', session.user.userId),
+    model: getModel(process.env.AZURE_PRIMARY_MODEL!, session.user.userId),
     messages: [
       {
         role: 'system',
@@ -146,7 +146,7 @@ export async function POST(req: Request) {
 
 async function summarizeConversation(messages: Message[], userId: string) {
   const result = await generateText({
-    model: getModel('gpt-4o-mini', userId),
+    model: getModel(process.env.AZURE_SECONDARY_MODEL!, userId),
     temperature: 0,
     messages: [
       {
@@ -169,7 +169,7 @@ async function summarizeConversation(messages: Message[], userId: string) {
 async function validateUserMessage(messages: Message[], userId: string) {
   try {
     const result = await generateText({
-      model: getModel('gpt-4o-mini', userId),
+      model: getModel(process.env.AZURE_SECONDARY_MODEL!, userId),
       temperature: 0,
       messages: [
         {
